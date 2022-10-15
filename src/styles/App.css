@@ -1,0 +1,15 @@
+#main{
+    font-family: sans-serif;
+}
+.article{
+    margin: 10px 0px;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+li{
+    list-style: none;
+}
+img{
+    height: 300px;
+    width: 60vw;
+}

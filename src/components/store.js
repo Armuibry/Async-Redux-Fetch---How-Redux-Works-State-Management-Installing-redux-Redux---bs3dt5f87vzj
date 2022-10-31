@@ -1,5 +1,7 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
+
+//creating slice with reducers
 const slice = createSlice({
     name: 'hot-news',
     initialState: {
@@ -14,10 +16,14 @@ const slice = createSlice({
     }
 })
 
+
+//store configration
 const store = configureStore({
     reducer : { news: slice.reducer}
 })
 
 export default store;
 
+
+//exporting slice actions to dispatch actions from other components
 export const actions = slice.actions;

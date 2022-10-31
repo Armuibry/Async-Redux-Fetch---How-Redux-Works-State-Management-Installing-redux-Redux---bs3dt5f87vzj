@@ -7,15 +7,16 @@ const API_KEY = "972b62433e774aaeaa9d393e3d7c3e76";   //Get your own api key fro
 
 const App = () => {
   const [newsCount , setNewsCount] = useState(1);
-  const [result , setResult] = useState("") 
   const dispatch = useDispatch();
+
+  //useSelector allow use to access the state of store
   const newsObj = useSelector((state)=> state.news);
+
+  //fetching data and dispatching result to store
   useEffect(() => {
    async function fetchdata(){
       const data = await fetch(` https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}&pageSize=${newsCount}`)
       const res = await data.json();
-      // console.log(res.articles[0].author);
-      setResult(res.articles)
       dispatch(actions.setnews(res.articles))
       return res;
 
@@ -24,17 +25,14 @@ const App = () => {
   }, [newsCount]);
 
   const numChangeHandler = (e) => {
+    if(e.target.value !== "")
     setNewsCount(e.target.value)
   };
 
-  let articles = [...result];
+  let articles = [...newsObj.articles];
 
   const filteredArticles = articles
 
-  console.log(articles);
-  console.log(newsObj.articlesNum);
-
-    
 
   return (
     <div id="main">
